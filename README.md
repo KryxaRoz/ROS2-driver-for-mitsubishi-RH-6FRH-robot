@@ -34,6 +34,7 @@ sudo apt-get install python3-pip
 After finishing all the installation, the driver is ready to use. To use the driver open the MTS-RH6FRH_ROS2_DRIVER.
 
 Source the workspace using command below:
+
 source /opt/ros/humble/setup.bash
 
 Use the colcon build
