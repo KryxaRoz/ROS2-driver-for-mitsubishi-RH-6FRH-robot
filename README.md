@@ -7,7 +7,7 @@ The instruction to install the ROS2 humble can be found in the link below:
 https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
 After succesfully installing ROS2 humble, it is required to install some necessary packages. Without them, you won't be able to run the driver.
-Use commandsd below to install all the required packages:
+Use commands below to install all the required packages:
 
 sudo apt-get install ros-humble-joint-state-publisher-gui
 
