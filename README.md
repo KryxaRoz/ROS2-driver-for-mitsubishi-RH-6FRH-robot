@@ -40,16 +40,21 @@ source /opt/ros/humble/setup.bash
 Use the colcon build
 
 Now source the workspace using command below:
+
 . install/setup.bash
 
 After succesfully using all those commands you can launch the driver.
 
 To use the driver in simulation mode use the command below:
+
 ros2 launch robot_bringup simulation.launch.py
 
 To use the driver with a real robot use the command below:
+
 ros2 launch robot_bringup real_robot.launch.py
 
-The default robot ip set in the driver is 192.168.0.20. To change the ip you can edit the "scara.config.xacro" file in robot_description/config folder.
+The default robot ip set in the driver is 192.168.0.20 
+
+To change the ip you can edit the "scara.config.xacro" file in robot_description/config folder.
 
 WARNING!!!!! After executing the move path the robot will start moving. Make sure that the working environment is safe and no people are tanding on robot's way.
