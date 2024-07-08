@@ -53,6 +53,10 @@ To use the driver with a real robot use the command below:
 
 ros2 launch robot_bringup real_robot.launch.py
 
+The robot program to use the driver requires the MXT instruction:
+
+MXT 1,1,100
+
 The default robot ip set in the driver is 192.168.0.20 
 
 To change the ip you can edit the "scara.config.xacro" file in robot_description/config folder.
