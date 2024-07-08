@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="rh6frh">
+    <!-- Description This file is a configuration file for moveit 2 tool.-->
+    <!-- WARNING!!!! Do not use the driver with any other robot arm. -->
+    <!-- Mitsubishi Electric assume any liability if the driver is used with a different robot-->
+
+    <group name="arm">
+        <joint name="virtual_joint"/>
+        <joint name="joint_1"/>
+        <joint name="joint_2"/>
+        <joint name="joint_3"/>
+        <joint name="joint_4"/>
+    </group>
+    
+    <group_state name="home" group="arm">
+        <joint name="joint_1" value="0"/>
+        <joint name="joint_2" value="0"/>
+        <joint name="joint_3" value="200"/>
+        <joint name="joint_4" value="0"/>
+    </group_state>
+ 
+    <disable_collisions link1="base_link" link2="J2" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="J3" reason="Never"/>
+    <disable_collisions link1="base_link" link2="J4" reason="Never"/>
+    <disable_collisions link1="base_link" link2="J4_rotate" reason="Never"/>
+    <disable_collisions link1="J2" link2="J3" reason="Adjacent"/>
+    <disable_collisions link1="J2" link2="J4" reason="Never"/>
+    <disable_collisions link1="J2" link2="J4_rotate" reason="Never"/>
+    <disable_collisions link1="J3" link2="J4" reason="Adjacent"/>
+    <disable_collisions link1="J3" link2="J4_rotate" reason="Adjacent"/>
+    <disable_collisions link1="J4" link2="J4_rotate" reason="Adjacent"/>
+</robot>

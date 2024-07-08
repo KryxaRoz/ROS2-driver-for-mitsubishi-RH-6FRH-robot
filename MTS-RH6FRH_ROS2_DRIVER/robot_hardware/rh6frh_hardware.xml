@@ -1,0 +1,9 @@
+<library path="robot_hardware">
+    <class name="rh6frh_hardware/Rh6frhHardwareInterface"
+            type="rh6frh_hardware::Rh6frhHardwareInterface"
+            base_class_type="hardware_interface::SystemInterface">
+        <description>
+            Hardware for RH6FRH joint-space position control.
+        </description>
+    </class>
+</library>
