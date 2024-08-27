@@ -70,4 +70,4 @@ The default robot IP set in the driver is 192.168.0.20.
 To change the IP, you can edit the scara.config.xacro file located in the robot_description/config folder.
 
 ### Important Safety Warning
-WARNING!!! After executing the move path, the robot will start moving. Ensure that the working environment is safe and that no people are standing in the robot's path.
+WARNING!!! After executing the move path, the robot will start moving. Ensure that the working environment is safe and there are people are standing in the robot's path.
