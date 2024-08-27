@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rh6frh">
+    <!-- Description This file is a configuration file of a arguments within the RH-6FRH5520 robot driver. -->
+    <!-- Here you can set the robot ip and connection port for the real robot -->
+    <!-- WARNING!!!! Do not use the driver with any other robot arm. -->
+    <!-- Mitsubishi Electric assume any liability if the driver is used with a different robot-->
+    
+    <xacro:arg name="is_sim" default="true"/>
+    <xacro:arg name="robot_port" default="10000"/>
+    <xacro:arg name="robot_ip" default="192.168.91.20"/>
+    
+    <xacro:include filename="$(find robot_description)/urdf/scara.urdf.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/scara_gazebo.xacro"/>
+    <xacro:include filename="$(find robot_description)/urdf/scara_ros2_control.xacro"/>
+
+    <!-- Used for fixing robot -->
+    <link name="world"/>
+
+    <xacro:rh6frh parent="world">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:rh6frh>
+
+    <xacro:rh6frh_r2c_hardware is_sim="$(arg is_sim)" robot_ip="$(arg robot_ip)" robot_port="$(arg robot_port)"/>
+</robot>

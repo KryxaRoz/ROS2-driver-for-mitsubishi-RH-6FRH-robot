@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rh6frh">
+    <!-- Description This file is a gazebo simulation configuration file.-->
+    <!-- WARNING!!!! Do not use the driver with any other robot arm. -->
+    <!-- Mitsubishi Electric assume any liability if the driver is used with a different robot-->
+    <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <parameters>$(find robot_controllers)/config/scara_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+</robot>

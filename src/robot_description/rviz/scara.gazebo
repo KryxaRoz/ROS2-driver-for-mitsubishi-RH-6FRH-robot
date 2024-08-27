@@ -1,0 +1,461 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='rh6frh'>
+      <joint name='virtual_joint' type='fixed'>
+        <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
+        <parent>world</parent>
+        <child>base_link</child>
+      </joint>
+      <link name='base_link'>
+        <pose relative_to='virtual_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>26.68 22.2 44.065 0 -0 0</pose>
+          <mass>15</mass>
+          <inertia>
+            <ixx>12172.8</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>13267.7</iyy>
+            <iyz>0</iyz>
+            <izz>6023.31</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_collision'>
+          <pose>0 0 0 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J1SCARA.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_link_visual'>
+          <pose>0 0 0 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J1SCARA.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_1' type='revolute'>
+        <pose relative_to='base_link'>0 0 342 0 -0 0</pose>
+        <parent>base_link</parent>
+        <child>J2</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.96706</lower>
+            <upper>2.96706</upper>
+            <effort>30</effort>
+            <velocity>400</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='J2'>
+        <pose relative_to='joint_1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>58.48 9.5 17.78 0 -0 0</pose>
+          <mass>6</mass>
+          <inertia>
+            <ixx>812.757</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>7472.08</iyy>
+            <iyz>0</iyz>
+            <izz>7020.32</izz>
+          </inertia>
+        </inertial>
+        <collision name='J2_collision'>
+          <pose>0 0 -342 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J2SCARA.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='J2_visual'>
+          <pose>0 0 -342 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J2SCARA.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_2' type='revolute'>
+        <pose relative_to='J2'>0 -324 68 0 -0 0</pose>
+        <parent>J2</parent>
+        <child>J3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.53073</lower>
+            <upper>2.53073</upper>
+            <effort>30</effort>
+            <velocity>670</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='J3'>
+        <pose relative_to='joint_2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>48.5 17 48.5 0 -0 0</pose>
+          <mass>10</mass>
+          <inertia>
+            <ixx>8804.17</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>15681.7</iyy>
+            <iyz>0</iyz>
+            <izz>8804.17</izz>
+          </inertia>
+        </inertial>
+        <collision name='J3_collision'>
+          <pose>0 324 -410 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J3SCARA.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='J3_visual'>
+          <pose>0 324 -410 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J3SCARA.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_3' type='prismatic'>
+        <pose relative_to='J3'>0 -230 0 0 -0 0</pose>
+        <parent>J3</parent>
+        <child>J4</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-297</lower>
+            <upper>25</upper>
+            <effort>30</effort>
+            <velocity>2400</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='J4'>
+        <pose relative_to='joint_3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>53.085 0 0 0 -0 0</pose>
+          <mass>5</mass>
+          <inertia>
+            <ixx>20.1612</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>20.1612</iyy>
+            <iyz>0</iyz>
+            <izz>20.1612</izz>
+          </inertia>
+        </inertial>
+        <collision name='J4_collision'>
+          <pose>0 550 -412 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J4SCARA.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='J4_visual'>
+          <pose>0 550 -412 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J4SCARA.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint_4' type='revolute'>
+        <pose relative_to='J4'>0 0 -80 0 -0 0</pose>
+        <parent>J4</parent>
+        <child>J4_rotate</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-6.28318</lower>
+            <upper>6.28318</upper>
+            <effort>30</effort>
+            <velocity>2500</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='J4_rotate'>
+        <pose relative_to='joint_4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>44.2375 0 0 0 -0 0</pose>
+          <mass>6</mass>
+          <inertia>
+            <ixx>21.1612</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2369.51</iyy>
+            <iyz>0</iyz>
+            <izz>2369.51</izz>
+          </inertia>
+        </inertial>
+        <collision name='J4_rotate_collision'>
+          <pose>0 550 -332 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J4SCARA.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='J4_rotate_visual'>
+          <pose>0 550 -332 1.57079 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://robot_description/meshes/J4SCARA.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+        <parameters>/home/mitsubishi/scara/install/robot_controllers/share/robot_controllers/config/scara_controllers.yaml</parameters>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>57 960000000</sim_time>
+      <real_time>59 861217943</real_time>
+      <wall_time>1716979214 880171413</wall_time>
+      <iterations>57960</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='rh6frh'>
+        <pose>-0.000196 0.000481 -3.6e-05 6e-06 0 -8e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='J2'>
+          <pose>-0.000366 -0.001316 342 5e-06 -1e-06 -0.004766</pose>
+          <velocity>0.056364 0.015653 0.016733 -0.000217 0.000338 -0.000157</velocity>
+          <acceleration>-32.0919 107.623 11.5129 -0.504523 0.059367 -0.132788</acceleration>
+          <wrench>-192.551 645.736 69.0773 0 -0 0</wrench>
+        </link>
+        <link name='J3'>
+          <pose>-1.54472 -323.998 409.998 6e-06 -1e-06 -0.001381</pose>
+          <velocity>0.063539 0.006105 -0.084624 0.000563 0.000393 -0.001491</velocity>
+          <acceleration>-8.02035 31.5981 9.21237 0.278155 0.112829 -1.46631</acceleration>
+          <wrench>-80.2035 315.981 92.1237 0 -0 0</wrench>
+        </link>
+        <link name='J4'>
+          <pose>-1.86186 -553.998 408.36 8e-06 -1e-06 -0.001383</pose>
+          <velocity>0.091581 -0.163417 -0.124587 -0.00017 -0.000393 0.001341</velocity>
+          <acceleration>-10.1888 17.9115 -9.10878 -0.44885 -1.32127 -3.04363</acceleration>
+          <wrench>-50.9438 89.5573 -45.5439 0 -0 0</wrench>
+        </link>
+        <link name='J4_rotate'>
+          <pose>-1.86176 -553.997 328.36 7e-06 -0 0.005492</pose>
+          <velocity>0.030207 -0.029547 -0.062933 0.001476 0.000771 -0.001099</velocity>
+          <acceleration>2.27191 -7.12603 -10.3759 1.10128 -0.151371 0.79962</acceleration>
+          <wrench>13.6315 -42.7562 -62.2556 0 -0 0</wrench>
+        </link>
+        <link name='base_link'>
+          <pose>-0.000196 0.000481 -3.6e-05 6e-06 0 -8e-06</pose>
+          <velocity>0.002021 -0.00231 0.007221 -0.000166 -0.000103 1.6e-05</velocity>
+          <acceleration>-10.5455 12.048 10.195 -0.451085 -0.383357 0.040405</acceleration>
+          <wrench>-158.182 180.72 152.924 0 -0 0</wrench>
+        </link>
+      </model>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>1346.61 -1255.94 846.709 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
