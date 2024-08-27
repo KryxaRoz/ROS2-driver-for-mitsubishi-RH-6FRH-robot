@@ -1,64 +1,73 @@
 # ROS2-driver-for-mitsubishi-RH-6FRH-robot
-This is a ROS2 driver for MELFA RH-6FRH robot compatible with CR800 controller
 
-To use the driver first isntall ROS2 humble on your computer.
-The instruction to install the ROS2 humble can be found in the link below:
+This is a ROS2 driver for MELFA RH-6FRH robot compatible with the CR800 controller.
 
-https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+## Installation Instructions
 
-After succesfully installing ROS2 humble, it is required to install some necessary packages. Without them, you won't be able to run the driver.
-Use commands below to install all the required packages:
+### 1. Install ROS2 Humble
 
+To use the driver, first install ROS2 Humble on your computer. The instructions can be found at the link below:
+
+[ROS2 Humble Installation Guide](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
+
+### 2. Install Required Packages
+
+After successfully installing ROS2 Humble, you need to install some necessary packages. Without them, you won't be able to run the driver. Use the commands below to install all the required packages:
+```bash
 sudo apt-get install ros-humble-joint-state-publisher-gui
-
 sudo apt-get install ros-humble-xacro
-
 sudo apt-get install ros-humble-gazebo-ros
-
 sudo apt-get install ros-humble-ros2-control
-
 sudo apt-get install ros-humble-ros2-controllers
-
 sudo apt-get install ros-humble-gazebo-ros2-control
-
 sudo apt-get install ros-humble-moveit
+```
 
-After installing all the packages use this command:
-
+### 3. Configure the Environment
+After installing all the packages, use this command to configure your environment:
+```bash
 echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
-
-And configure the python:
-
+```
+### 4. Configure Python
+Install Python pip if it’s not already installed:
+```bash
 sudo apt-get install python3-pip
+```
+### 5. Source the ROS2 Workspace
+After finishing all the installations, the driver is ready to use. To begin, open the MTS-RH6FRH_ROS2_DRIVER workspace.
 
-After finishing all the installation, the driver is ready to use. To use the driver open the MTS-RH6FRH_ROS2_DRIVER.
-
-Source the workspace using command below:
-
+Source the workspace using the command below:
+```bash
 source /opt/ros/humble/setup.bash
-
-Use the colcon build
-
-Now source the workspace using command below:
-
+```
+Then build the workspace with:
+```bash
+colcon build
+```
+After building, source the workspace:
+```bash
 . install/setup.bash
+```
+### 6. Launch the Driver
+After successfully executing all these commands, you can launch the driver.
 
-After succesfully using all those commands you can launch the driver.
-
-To use the driver in simulation mode use the command below:
-
+To use the driver in simulation mode, use the command below:
+```bash
 ros2 launch robot_bringup simulation.launch.py
-
-To use the driver with a real robot use the command below:
-
+```
+To use the driver with a real robot, use the command below:
+```bash
 ros2 launch robot_bringup real_robot.launch.py
-
+```
+## Robot Configuration
 The robot program to use the driver requires the MXT instruction:
-
+```bash
+Open "ENET:192.168.0.20" As #1
 MXT 1,1,100
+```
+The default robot IP set in the driver is 192.168.0.20.
 
-The default robot ip set in the driver is 192.168.0.20 
+To change the IP, you can edit the scara.config.xacro file located in the robot_description/config folder.
 
-To change the ip you can edit the "scara.config.xacro" file in robot_description/config folder.
-
-WARNING!!!!! After executing the move path the robot will start moving. Make sure that the working environment is safe and no people are tanding on robot's way.
+### Important Safety Warning
+WARNING!!! After executing the move path, the robot will start moving. Ensure that the working environment is safe and that no people are standing in the robot's path.
